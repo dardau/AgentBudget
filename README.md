@@ -36,7 +36,3 @@ The first command downloads public open-source packages. No paid account or cryp
 The owner is trusted to control its own budget. Agent compromise can still spend the remaining budget at approved providers. Owner compromise is not solved by this prototype. A valid payment does not prove useful data delivery. Request IDs prevent exact duplicate IDs only, not two different IDs for the same economic task. A pending payment can execute before a later pause. Provider changes and agent rotation require the owner. New deployments reset budget accounting; there is no global cross-contract cap.
 
 Checks-effects-interactions and OpenZeppelin ReentrancyGuard protect the external transfer path. Tests verify rollback on a failed provider transfer. They do not constitute an independent audit. No real private keys or seed phrases are required or printed. Environment secrets, if later needed only for course work, must stay in `.env` excluded by `.gitignore`. Never use a wallet holding real assets.
-
-## Attribution and AI disclosure
-
-OpenZeppelin Contracts 5.4.0 is used under MIT; see `THIRD_PARTY_NOTICES.md`. Hardhat, ethers and solc are pinned in package-lock.json. OpenAI Codex (GPT-6 Astra and GPT-6.1 Sol) provided substantial help with code, tests, modelling and documentation. All students must review and understand the code and make genuine contributions from their own GitHub accounts. This package does not fabricate individual commits or self-evaluation claims.
