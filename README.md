@@ -27,7 +27,6 @@ The first command downloads public open-source packages. No paid account or cryp
 ## Demo and repository links
 
 - Repository: https://github.com/dardau/AgentBudget
-- Demo video URL: pending team upload and anyone-with-link access.
 - The 65-second demo is part of the project materials.
 - Video format: captioned terminal capture of actual command execution, edited for readability. Agent behaviour and supplier data are deterministic simulations. Re-run the commands above for an independent live demonstration.
 - Local chain ID: 31337. No public testnet or mainnet deployment exists.
@@ -41,7 +40,3 @@ Checks-effects-interactions and OpenZeppelin ReentrancyGuard protect the externa
 ## Attribution and AI disclosure
 
 OpenZeppelin Contracts 5.4.0 is used under MIT; see `THIRD_PARTY_NOTICES.md`. Hardhat, ethers and solc are pinned in package-lock.json. OpenAI Codex (GPT-6 Astra and GPT-6.1 Sol) provided substantial help with code, tests, modelling and documentation. All students must review and understand the code and make genuine contributions from their own GitHub accounts. This package does not fabricate individual commits or self-evaluation claims.
-
-## Course submission
-
-Confirm instructor approval for the startup change from RefundPool. Add the actual team number to the submitted files. SE-2532 is the academic group. Insert real repository and accessible video links in the report cover, prototype section, title slide and this README. Paste the repository URL in the Moodle comment. Do not present an empty placeholder link as published work.
