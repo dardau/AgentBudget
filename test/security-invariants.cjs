@@ -3,7 +3,6 @@ const hre = require('hardhat');
 const { ethers } = require('ethers');
 
 // Zhansaya Boranbaeva's assigned area: unauthorized access, providers and pause.
-// Prepared with OpenAI Codex assistance; complements the original 15 tests.
 describe('Security invariants for policy rejection and recovery', function () {
   let contract, owner, agent, supplier, outsider;
   const requestId = ethers.id('security-review-request');
