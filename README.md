@@ -20,7 +20,7 @@ The first command downloads public open-source packages. No paid account or cryp
 
 - `contracts/AgentBudget.sol`: core budget contract.
 - `contracts/TestReceiver.sol`: adversarial receiver used only in tests.
-- `test/budget.cjs`: 17 baseline and validation tests, including failure and callback behaviour, agent rotation validation and deployment input checks.
+- `test/budget.cjs`: 12 baseline tests, including failure and callback behaviour.
 - `test/security-invariants.cjs`: 6 scoped tests replacing 3 basic checks, covering unauthorized access, denied/revoked providers, and pause/recovery state.
 - `risk-and-investor-review.md`: risk controls, budget mapping and conditional investor-return calculations.
 - `scripts/demo.cjs`: deployment and sequential demonstration.
@@ -29,7 +29,7 @@ The first command downloads public open-source packages. No paid account or cryp
 ## Demo and repository links
 
 - Repository: https://github.com/dardau/AgentBudget
-- [Watch the prototype demonstration (2:26)](https://github.com/user-attachments/assets/448a590e-8a16-4437-837f-cacaee6c6e39). English captions show local deployment, payment controls, recovery and 18 passing tests.
+- [Watch the prototype demonstration (1:43)](https://github.com/user-attachments/assets/7c156914-14ec-4927-a8a6-5eb721145600). Recorded terminal session with English captions: local deployment, payment controls, recovery and 18 passing tests.
 - Reproduce the demonstration: `npm run demo`; run the tests with `npm test`.
 - The script deploys locally, funds 250 test units, pays 80, rejects invalid requests, pauses and recovers 170. Agent behaviour and supplier data are deterministic simulations.
 - Local chain ID: 31337. No public testnet or mainnet deployment exists.
