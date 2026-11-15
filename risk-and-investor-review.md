@@ -35,31 +35,35 @@ A hypothetical Kazakhstan LLP would supply software, but the actual activity det
 
 ## Funding and return calculations
 
-The revised case 1 is a conditional benchmark-boundary calculation, not an estimated sales forecast. The unsupported 50% reply-to-trial estimate is removed: 100% represents the mathematical upper boundary for that step, while case 2 permits zero sales. Hunter’s 3% all-reply rate, First Page Sage’s 18.2% organic opt-in trial conversion and ChartMogul’s retention data come from different populations. Case 6 retains the original unsupported target only as an archive. Every independent input is mapped to a source, calculation, boundary or defined scope allowance in the submission Input register.
+The revised submission separates observed evidence from a calculated launch condition. Case 1 combines unlike external samples and is retained as a cross-study illustration only. It has NPV −$32,337.81 and requires $48,400 if spending continues. Case 6 archives the unsupported original targets. Neither estimates AgentBudget demand.
 
-| Item | Formula | Result, USD |
+The new Launch threshold sheet solves the inverse question: which constant monthly paid additions produce NPV = 0 under the stated $49 net price, cost budget and 55% annual retention reference? Monthly survival is `0.55^(1/12)`. One new team each month yields annual billed team-months of 59.6507917821, 141.2211019522 and 186.0847725458. At $46 contribution, annual contribution coefficients are $2,743.936422, $6,496.170690 and $8,559.899537. Annual fixed expenses are $10,680.175557, $13,560.175557 and $16,440.175557.
+
+For constant additions n, annual pretax income is `n × coefficient − fixed expense`. Annual cash subtracts 20% of positive annual income. Solving `−initial + sum(annual cash / 1.25^year) = 0` gives **3.4740111185 new paid teams/month**. The minimum constant whole-number condition with positive NPV is therefore **4/month from month 1**. The workbook enumerates all eight tax-sign regimes; an independent Python bisection confirms the root. Three/month produces negative NPV of $−4,279.05.
+
+This is a launch requirement, not evidence that customers exist. It needs 144 distinct paying teams acquired over 36 months before churn, within 16/24/32 acquisition hours monthly. The implied labour-only CAC limits are $120/$180/$240. The old cold-email illustration does not establish such a channel. The acquisition, retention, price and service-cost conditions remain unverified.
+
+| Item | Formula or schedule | Result, USD |
 |---|---|---:|
 | Initial expense | 120 × 30 + 5,000 + 4 × 60,000 / 444.3 | 9,140.18 |
-| Three-year operating deficits | 10,200.754985 + 12,185.454328 + 14,137.374153 | 36,523.58 |
-| Peak financing need | Initial expense + deficits | 45,663.76 |
-| Three-month fixed-cost reserve | 3 × 890.014630 | 2,670.04 |
-| Rounded funding envelope | Ceiling((45,663.759023 + 2,670.043889) / 100) × 100 | 48,400.00 |
-| Post-money, illustrative 20% stake | 48,400 / 0.20 | 242,000.00 |
-| Pre-money | 242,000 − 48,400 | 193,600.00 |
-| Exit threshold for 2× investor money | 2 × 48,400 / 0.20 | 484,000.00 |
-| Exit threshold for 25% annually over 5 years | 48,400 × 1.25^5 / 0.20 | 738,525.39 |
+| Peak cumulative need | Maximum deficit in the 36-month case-8 schedule | 11,466.47 |
+| Interim operating deficit | Peak need − initial outflow | 2,326.29 |
+| Three-month reserve | 3 × 890.014630 | 2,670.04 |
+| Conditional funding | Ceiling((11,466.467480 + 2,670.043889) / 100) × 100 | 14,200.00 |
+| Post-money at illustrative 20% | 14,200 / 0.20 | 71,000.00 |
+| Pre-money | 71,000 − 14,200 | 56,800.00 |
+| Exit for 2× investor money | 2 × 14,200 / 0.20 | 142,000.00 |
+| Exit for 25% annually over 5 years | 14,200 × 1.25^5 / 0.20 | 216,674.80 |
 
-Two times money in five years gives `2^(1/5) − 1 = 14.87%` annually. A 25% target requires `1.25^5 = 3.0518×`. These are arithmetic thresholds, not forecasts; dilution, transaction fees and debt would alter investor proceeds. Increasing the funding need does not increase fair value.
+Case 8 annual after-tax cash flows are $236.456105, $9,939.605762 and $14,239.538073. The initial outflow is $9,140.175557. Thus NPV at 25% is **$4,700.98**, and cumulative project cash first becomes non-negative in **month 22**. Financing and terminal value are excluded from NPV. The early cash deficit is still funded even though total Year 1 operating cash is positive.
 
-Project NPV uses the initial outflow and three annual year-end operating cash flows, excluding financing and terminal value:
+Two sourced adverse cases hold the required sales and retention fixed: $59/hour labour gives NPV −$21,712.45, no 36-month payback and $30,200 funding; $40 monthly net price gives NPV −$2,316.59, month-31 payback and $14,800 funding. At the same $14,200 starting cash, the upper-rate case fails in month 1. Scenarios have no assigned probabilities. These comparisons are not demand-elasticity estimates.
 
-`−9,140.175557 − 10,200.754985/1.25 − 12,185.454328/1.25^2 − 14,137.374153/1.25^3 = −32,337.81`.
-
-No payback occurs within 36 months. A $48,400 envelope covers the conditional continuation schedule; it does not justify committing that amount. The decision gate must come before production build and external-review spending.
+Two times money in five years gives `2^(1/5) − 1 = 14.87%` annually. A 25% target requires `1.25^5 = 3.0518×`. The exit figures are required values, not forecast sales of the company. Dilution, fees and debt are excluded. Funding need does not establish fair value.
 
 ## Conclusion for the defense
 
-The prototype demonstrates deterministic spending controls locally. It does not establish customer demand, production security or legal permission. At a proposed net subscription of $49, the buyer must save 49/30 × 60 = 98 minutes monthly versus a free alternative with equal payment costs. The next hypothetical decision is to validate that value, reduce acquisition cost and confirm security/legal scope. Defer a full funding commitment until the evidence changes the economics.
+The prototype demonstrates deterministic spending controls locally. A viable launch is conditional on the calculated acquisition requirement and the other stated inputs. At $49 net/month, the buyer value threshold remains `49/30 × 60 = 98` minutes saved monthly against a free alternative with equal other costs. The educational request is to approve an evidence plan and consider the $14,200 envelope only after value, acquisition performance, retention, service scope and legal/security requirements are validated. No real investment or completed customer study is claimed.
 
 ## Basis for the revised inputs
 
