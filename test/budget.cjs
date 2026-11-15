@@ -12,6 +12,22 @@ describe('AgentBudget local security and business rules',function(){
  it('allows owner recovery while paused',async()=>{await(await c.setPaused(true)).wait();await(await c.withdraw(250)).wait();assert.equal(BigInt(await hre.network.provider.send('eth_getBalance',[await c.getAddress(),'latest'])),0n);});
  it('rejects unauthorized policy changes and withdrawal',async()=>{await fail(()=>c.connect(agent).setProvider(other.address,true),'Unauthorized');await fail(()=>c.connect(agent).withdraw(1),'Unauthorized');await fail(()=>c.connect(other).setPaused(true),'Unauthorized');});
  it('revokes the old agent after rotation',async()=>{await(await c.setAgent(other.address)).wait();await fail(()=>c.connect(agent).pay(id(1),provider.address,50),'Unauthorized');await(await c.connect(other).pay(id(2),provider.address,50)).wait();});
+ it('rejects agent rotation by the agent or an unrelated account',async()=>{
+  for(const caller of [agent,other]){
+   await fail(()=>c.connect(caller).setAgent(provider.address),'Unauthorized');
+   assert.equal(await c.agent(),agent.address);
+  }
+  await(await c.connect(agent).pay(id('after-denied-rotation'),provider.address,50)).wait();
+  assert.equal(await c.spent(),50n);
+ });
+ it('rejects zero and owner addresses during agent rotation',async()=>{
+  for(const next of [ethers.ZeroAddress,owner.address]){
+   await fail(()=>c.setAgent(next),'InvalidInput');
+   assert.equal(await c.agent(),agent.address);
+  }
+  await(await c.setAgent(other.address)).wait();
+  assert.equal(await c.agent(),other.address);
+ });
  it('rolls back accounting when provider rejects payment',async()=>{rec=await deploy('TestReceiver');await rec.waitForDeployment();await(await rec.configure(await c.getAddress(),true,false)).wait();await(await c.setProvider(await rec.getAddress(),true)).wait();await fail(()=>c.connect(agent).pay(id(1),rec.target,50),'TransferFailed');assert.equal(await c.spent(),0n);assert.equal(await c.usedRequest(id(1)),false);});
  it('blocks callback reentrancy even when receiver is the agent',async()=>{rec=await deploy('TestReceiver');await rec.waitForDeployment();await(await rec.configure(c.target,false,true)).wait();await(await c.setProvider(rec.target,true)).wait();await(await c.setAgent(rec.target)).wait();await(await rec.trigger(id(1),50)).wait();assert.equal(await rec.blocked(),true);assert.equal(await c.spent(),50n);});
  it('rejects zero value and insufficient contract balance',async()=>{await fail(()=>c.connect(agent).pay(id(1),provider.address,0),'InvalidInput');await(await c.withdraw(240)).wait();await fail(()=>c.connect(agent).pay(id(2),provider.address,11),'InsufficientFunds');});
