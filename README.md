@@ -20,7 +20,7 @@ The first command downloads public open-source packages. No paid account or cryp
 
 - `contracts/AgentBudget.sol`: core budget contract.
 - `contracts/TestReceiver.sol`: adversarial receiver used only in tests.
-- `test/budget.cjs`: 12 baseline tests, including failure and callback behaviour.
+- `test/budget.cjs`: 15 baseline and validation tests, including failure and callback behaviour, agent rotation validation and deployment input checks.
 - `test/security-invariants.cjs`: 6 scoped tests replacing 3 basic checks, covering unauthorized access, denied/revoked providers, and pause/recovery state.
 - `risk-and-investor-review.md`: risk controls, budget mapping and conditional investor-return calculations.
 - `scripts/demo.cjs`: deployment and sequential demonstration.

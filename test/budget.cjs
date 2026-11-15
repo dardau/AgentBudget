@@ -28,6 +28,11 @@ describe('AgentBudget local security and business rules',function(){
   await(await c.setAgent(other.address)).wait();
   assert.equal(await c.agent(),other.address);
  });
+ it('rejects contract deployment with an expired deadline',async()=>{
+  const block=await p.getBlock('latest');
+  const args=[agent.address,100,250,block.timestamp-1];
+  await fail(()=>deploy('AgentBudget',args),'InvalidInput');
+ });
  it('rolls back accounting when provider rejects payment',async()=>{rec=await deploy('TestReceiver');await rec.waitForDeployment();await(await rec.configure(await c.getAddress(),true,false)).wait();await(await c.setProvider(await rec.getAddress(),true)).wait();await fail(()=>c.connect(agent).pay(id(1),rec.target,50),'TransferFailed');assert.equal(await c.spent(),0n);assert.equal(await c.usedRequest(id(1)),false);});
  it('blocks callback reentrancy even when receiver is the agent',async()=>{rec=await deploy('TestReceiver');await rec.waitForDeployment();await(await rec.configure(c.target,false,true)).wait();await(await c.setProvider(rec.target,true)).wait();await(await c.setAgent(rec.target)).wait();await(await rec.trigger(id(1),50)).wait();assert.equal(await rec.blocked(),true);assert.equal(await c.spent(),50n);});
  it('rejects zero value and insufficient contract balance',async()=>{await fail(()=>c.connect(agent).pay(id(1),provider.address,0),'InvalidInput');await(await c.withdraw(240)).wait();await fail(()=>c.connect(agent).pay(id(2),provider.address,11),'InsufficientFunds');});
