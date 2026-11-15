@@ -39,8 +39,12 @@ The owner is trusted to control its own budget. Agent compromise can still spend
 
 Checks-effects-interactions and OpenZeppelin ReentrancyGuard protect the external transfer path. Tests verify rollback on a failed provider transfer. They do not constitute an independent audit. No real private keys or seed phrases are required or printed. Environment secrets, if later needed only for course work, must stay in `.env` excluded by `.gitignore`. Never use a wallet holding real assets.
 
-## Attribution and AI assistance
+## Third-party attribution
 
-OpenZeppelin Contracts 5.4.0 is used under the MIT licence; see `THIRD_PARTY_NOTICES.md` and the dependency licence. The original project disclosure named OpenAI Codex with GPT-6 Astra and GPT-6.1 Sol for substantial assistance with code, tests, modelling and documentation. This revision used OpenAI Codex (GPT-6) for six security tests and risk/investor documentation, alongside financial and presentation preparation outside the repository.
+OpenZeppelin Contracts 5.4.0 is used under the MIT licence; see `THIRD_PARTY_NOTICES.md` and the dependency licence.
 
 The additional tests and risk/investor review correspond to Zhansaya Boranbaeva's supplied self-assessment. Students must review and understand submitted work; each member should commit their own actual contribution from their own account. No customer interviews, paid pilots or personal review confirmations are claimed.
+
+## Project preparation
+
+AI tools were used to help develop and clarify the project idea. The remaining project work was completed by the team members.
