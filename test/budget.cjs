@@ -33,6 +33,22 @@ describe('AgentBudget local security and business rules',function(){
   const args=[agent.address,100,250,block.timestamp-1];
   await fail(()=>deploy('AgentBudget',args),'InvalidInput');
  });
+ it('rejects zero and owner agents during deployment',async()=>{
+  const block=await p.getBlock('latest');
+  for(const initialAgent of [ethers.ZeroAddress,owner.address]){
+   await fail(()=>deploy('AgentBudget',[initialAgent,100,250,block.timestamp+3600]),'InvalidInput');
+  }
+ });
+ it('rejects invalid initial spending limits',async()=>{
+  const block=await p.getBlock('latest');
+  for(const [paymentLimit,totalBudget] of [[0,250],[100,99]]){
+   await fail(()=>deploy('AgentBudget',[agent.address,paymentLimit,totalBudget,block.timestamp+3600]),'InvalidInput');
+  }
+  const exactBudget=await deploy('AgentBudget',[agent.address,100,100,block.timestamp+3600]);
+  await exactBudget.waitForDeployment();
+  assert.equal(await exactBudget.perPaymentLimit(),100n);
+  assert.equal(await exactBudget.budgetLimit(),100n);
+ });
  it('rolls back accounting when provider rejects payment',async()=>{rec=await deploy('TestReceiver');await rec.waitForDeployment();await(await rec.configure(await c.getAddress(),true,false)).wait();await(await c.setProvider(await rec.getAddress(),true)).wait();await fail(()=>c.connect(agent).pay(id(1),rec.target,50),'TransferFailed');assert.equal(await c.spent(),0n);assert.equal(await c.usedRequest(id(1)),false);});
  it('blocks callback reentrancy even when receiver is the agent',async()=>{rec=await deploy('TestReceiver');await rec.waitForDeployment();await(await rec.configure(c.target,false,true)).wait();await(await c.setProvider(rec.target,true)).wait();await(await c.setAgent(rec.target)).wait();await(await rec.trigger(id(1),50)).wait();assert.equal(await rec.blocked(),true);assert.equal(await c.spent(),50n);});
  it('rejects zero value and insufficient contract balance',async()=>{await fail(()=>c.connect(agent).pay(id(1),provider.address,0),'InvalidInput');await(await c.withdraw(240)).wait();await fail(()=>c.connect(agent).pay(id(2),provider.address,11),'InsufficientFunds');});
