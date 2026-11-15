@@ -1,6 +1,6 @@
 # Risk and investor review
 
-Assigned scope: Zhansaya Boranbaeva, SE-2532. Prepared with OpenAI Codex (GPT-6) assistance on 15 November 2026. This document supports report main pages 5–6 and 14–15, and the risk, investor-return and conclusion slides. It does not claim completed customer research or an independent security audit.
+Assigned scope: Zhansaya Boranbaeva, SE-2532. This document supports report main pages 5–6 and 14–15, and the risk, investor-return and conclusion slides. It does not claim completed customer research or an independent security audit.
 
 ## Security evidence
 
