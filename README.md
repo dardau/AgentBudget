@@ -20,15 +20,17 @@ The first command downloads public open-source packages. No paid account or cryp
 
 - `contracts/AgentBudget.sol`: core budget contract.
 - `contracts/TestReceiver.sol`: adversarial receiver used only in tests.
-- `test/budget.cjs`: 15 tests, including failure and callback behaviour.
+- `test/budget.cjs`: 12 baseline tests, including failure and callback behaviour.
+- `test/security-invariants.cjs`: 6 scoped tests replacing 3 basic checks, covering unauthorized access, denied/revoked providers, and pause/recovery state.
+- `risk-and-investor-review.md`: risk controls, budget mapping and conditional investor-return calculations.
 - `scripts/demo.cjs`: deployment and sequential demonstration.
 - `hardhat.config.cjs`: local network and compiler configuration.
 
 ## Demo and repository links
 
 - Repository: https://github.com/dardau/AgentBudget
-- The 65-second demo is part of the project materials.
-- Video format: captioned terminal capture of actual command execution, edited for readability. Agent behaviour and supplier data are deterministic simulations. Re-run the commands above for an independent live demonstration.
+- Reproducible demo: `npm run demo`. An accessible recorded-video URL has not been supplied with the reviewed files; add it here after recording and checking anonymous access.
+- The script deploys locally, funds 250 test units, pays 80, rejects invalid requests, pauses and recovers 170. Agent behaviour and supplier data are deterministic simulations.
 - Local chain ID: 31337. No public testnet or mainnet deployment exists.
 
 ## Security boundaries
@@ -36,3 +38,9 @@ The first command downloads public open-source packages. No paid account or cryp
 The owner is trusted to control its own budget. Agent compromise can still spend the remaining budget at approved providers. Owner compromise is not solved by this prototype. A valid payment does not prove useful data delivery. Request IDs prevent exact duplicate IDs only, not two different IDs for the same economic task. A pending payment can execute before a later pause. Provider changes and agent rotation require the owner. New deployments reset budget accounting; there is no global cross-contract cap.
 
 Checks-effects-interactions and OpenZeppelin ReentrancyGuard protect the external transfer path. Tests verify rollback on a failed provider transfer. They do not constitute an independent audit. No real private keys or seed phrases are required or printed. Environment secrets, if later needed only for course work, must stay in `.env` excluded by `.gitignore`. Never use a wallet holding real assets.
+
+## Attribution and AI assistance
+
+OpenZeppelin Contracts 5.4.0 is used under the MIT licence; see `THIRD_PARTY_NOTICES.md` and the dependency licence. The original project disclosure named OpenAI Codex with GPT-6 Astra and GPT-6.1 Sol for substantial assistance with code, tests, modelling and documentation. This revision used OpenAI Codex (GPT-6) for six security tests and risk/investor documentation, alongside financial and presentation preparation outside the repository.
+
+The additional tests and risk/investor review correspond to Zhansaya Boranbaeva's supplied self-assessment. Students must review and understand submitted work; each member should commit their own actual contribution from their own account. No customer interviews, paid pilots or personal review confirmations are claimed.
