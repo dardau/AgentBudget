@@ -30,6 +30,7 @@ The first command downloads public open-source packages. No paid account or cryp
 
 - Repository: https://github.com/dardau/AgentBudget
 - [Watch the prototype demonstration (1:43)](https://github.com/user-attachments/assets/7c156914-14ec-4927-a8a6-5eb721145600). Recorded terminal session with English captions: local deployment, payment controls, recovery and 18 passing tests.
+- [Watch demo 2 — animated interface with English voiceover (1:41)](demos/AgentBudget_Demo_2.mp4). Visual replay of the local test scenario with cursor clicks, payment checks, balance changes and recovery. The interface illustrates the recorded scenario; it is not connected to a live blockchain or real data provider.
 - Reproduce the demonstration: `npm run demo`; run the tests with `npm test`.
 - The script deploys locally, funds 250 test units, pays 80, rejects invalid requests, pauses and recovers 170. Agent behaviour and supplier data are deterministic simulations.
 - Local chain ID: 31337. No public testnet or mainnet deployment exists.
